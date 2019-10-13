@@ -1,4 +1,6 @@
 class Portfolio < ApplicationRecord
+  MAX_NUMBER_OF_TAGS = 4
+
   belongs_to :user
 
   has_one :profile
