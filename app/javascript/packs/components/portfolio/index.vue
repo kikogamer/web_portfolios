@@ -94,10 +94,11 @@
 </template>
 
 <script>
+import Tags from './tags.vue'
 const url = new URL(document.location);
 
 export default {
-  components: {},
+  components: { Tags },
 
   data() {
     return {
