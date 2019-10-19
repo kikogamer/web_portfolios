@@ -24,7 +24,6 @@ Quando "remove a Experiência" do
 end
 
 Então "a Experiência é adicionada ao Portfólio" do
-  @portfolio.reload
   expect(@portfolio.experiences.count).to eq 1
   expect(page).to have_css(".resource-experience", count: 1)
 end
