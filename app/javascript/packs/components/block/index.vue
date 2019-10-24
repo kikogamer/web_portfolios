@@ -7,33 +7,37 @@
         </div>
 
         <div class="col l4 m4 s12">
-          <div v-for="block in leftBlocks" :key="block.id" class="card-panel">
-            <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
-            <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
-          </div>
+          <draggable v-model="leftBlocks" @end="updateBlocks(leftBlocks)">
+            <div v-for="block in leftBlocks" :key="block.id" class="card-panel">
+              <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
+              <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
+            </div>
 
-          <div class="card-panel center">
-            <img
-              src="/assets/add_portfolio.png"
-              id="add-left-block"
-              @click="openModalToAdd('left')"
-            />
-          </div>
+            <div class="card-panel center">
+              <img
+                src="/assets/add_portfolio.png"
+                id="add-left-block"
+                @click="openModalToAdd('left')"
+              />
+            </div>
+          </draggable>
         </div>
 
         <div class="col l8 m8 s12">
-          <div v-for="block in rightBlocks" :key="block.id" class="card-panel">
-            <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
-            <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
-          </div>
+          <draggable v-model="rightBlocks" @end="updateBlocks(rightBlocks)">
+            <div v-for="block in rightBlocks" :key="block.id" class="card-panel">
+              <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
+              <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
+            </div>
 
-          <div class="card-panel center">
-            <img
-              src="/assets/add_portfolio.png"
-              id="add-right-block"
-              @click="openModalToAdd('right')"
-            />
-          </div>
+            <div class="card-panel center">
+              <img
+                src="/assets/add_portfolio.png"
+                id="add-right-block"
+                @click="openModalToAdd('right')"
+              />
+            </div>
+          </draggable>
         </div>
 
         <div id="add-block-modal" class="modal">
@@ -67,6 +71,8 @@
 </template>
 
 <script>
+import draggable from "vuedraggable";
+
 import Profile from "../portfolio_resources/profile";
 import Education from "../portfolio_resources/education";
 import AdditionalInformation from "../portfolio_resources/additional_information";
@@ -77,10 +83,11 @@ import Hobby from "../portfolio_resources/hobby";
 import Language from "../portfolio_resources/language";
 import Skill from "../portfolio_resources/skill";
 import Social from "../portfolio_resources/social";
-import ContactForm from "../portfolio_resources/contact_form";
+import ContactForm from "../portfolio_resources/contact_form_block";
 
 export default {
   components: {
+    draggable,
     Profile,
     Education,
     additional_information: AdditionalInformation,
@@ -156,7 +163,26 @@ export default {
       this.blockKinds = this[`${side}Kinds`];
       this.modalInstance.open();
     },
-
+    updateBlocks(blocks) {
+      let blocksToUpdate = blocks.map((block, index) => {
+        return { id: block.id, position: index };
+      });
+      this.$http
+        .patch(`/portfolios/${this.portfolioId}/blocks/positions`, {
+          blocks: blocksToUpdate
+        })
+        .then(
+          response => {},
+          response => {
+            if (response.body.old_blocks)
+              this.blocks = response.body.old_blocks;
+            M.toast({
+              html: "Ocorreu um erro ao atualizar as posições dos blocos",
+              classes: "red"
+            });
+          }
+        );
+    },
     addBlock() {
       this.$resource("/portfolios{/portfolioId}/blocks")
         .save({ portfolioId: this.portfolioId }, { block: this.blockToAdd })
