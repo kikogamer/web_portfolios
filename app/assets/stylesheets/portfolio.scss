@@ -8,6 +8,11 @@
   }
 
   .portfolio {
+    
+    img{
+      height: 150px !important;
+    }
+
     span.name {
       font-size: 0.9em;
       margin-top: 1em;
@@ -38,9 +43,11 @@
   }
 
   .add-portfolio {
+    .card-panel{
+      height: 456px;
+    }
     a.new-portfolio > img {
-      margin-top: 55%;
-      margin-bottom: 55%;
+      padding-top: 65%;
     }
   }
 }

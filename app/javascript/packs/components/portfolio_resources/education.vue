@@ -115,6 +115,7 @@ export default {
         .then(
           response => {
             this.educations.push(response.body.resource);
+            this.education = {};
           },
           response => {
             response.body.errors.forEach(error => {
