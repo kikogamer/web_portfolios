@@ -1,7 +1,7 @@
 lock "~> 3.11.2"
 
 set :application, "web_portfolios"
-set :repo_url, "git@github.com:kikogamer/web_portfolios.git"
+set :repo_url, "https://github.com/kikogamer/web_portfolios.git"
 
 set :deploy_to, "/var/www/web_portfolios"
 append :linked_files, "config/database.yml", "config/storage.yml", "config/master.key"
