@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+  get 'payments/create'
   get 'search/index'
   get 'contact_forms/create'
   root 'pages#home'
@@ -6,6 +8,9 @@ Rails.application.routes.draw do
   get :search, to: "search#index"
   
   resources :portfolios, except: :new do
+    member do
+      resources :payments, only: [:index, :create]
+    end
     resources :tags, only: [:create, :destroy], param: :tag_id, controller: :portfolio_tags
     resources :blocks, only: [:index, :create, :destroy] do
       resources :additional_informations, only: [:index, :update]
