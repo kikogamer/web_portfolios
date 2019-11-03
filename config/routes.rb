@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
   get :search, to: "search#index"
   
+  post '/webhooks', to: 'webhooks#webhooks'
+  
   resources :portfolios, except: :new do
     member do
       resources :payments, only: [:index, :create]
