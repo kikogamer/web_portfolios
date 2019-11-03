@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col m4 offset-m1 s12 ">
+    <div class="input-field">
+      <%= form.text_field "card[fullname]", id: 'fullname', required: true %>
+      <label for="email">Nome no cartão</label>
+    </div>
+    <div class="input-field">
+      <%= form.text_field "card[cpf]", id: 'cpf', required: true %>
+      <label for="number">CPF</label>
+    </div>
+    <div class="input-field">
+      <%= form.date_field "card[birthdate]", id: 'birthdate', required: true %>
+      <label for="cvc">Data de nascimento</label>
+    </div>
+  </div>
+  <div class="col m4 offset-m2 s12">
+    <div class="input-field">
+      <%= form.text_field "card[number]", id: 'card_number', required: true %>
+      <label for="number">Número</label>
+    </div>
+    <div class="input-field">
+      <%= form.select("expiration_month", (1..12).to_a) %>
+      <label for="expiration_month">Mês de expiração</label>
+    </div>
+    <div class="input-field">
+      <%= form.select("expiration_year", credit_card_expiration_year_range) %>
+      <label for="expiration_year">Ano de expiração</label>
+    </div>
+    <div class="input-field">
+      <%= form.text_field :cvc, id: 'card_cvc', required: true %>
+      <label for="cvc">CVC</label>
+    </div>
+    <div class="input-field">
+      <textarea id="public_key" style="display:none;">
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlHxduyfQNETc9uETJK1L
+        w9G1BVA8z6dMIiEBuSHNv6gJ3xV3znS23ePKHOyzYnveo59Pf2jTBaSJcXTwEX9j
+        vDh+XuliqjlCfLG2Q6On/YNUM7mvGBOlP+8Zvtriad8gBxZ9HBhRloEfv3E3ueDY
+        FTjl6/NkmbTNExCU8BeHT3YFGL/ZmSEYv3RF6LvoxtRvovmXuoJMiD5WPwe2+pgg
+        hAG5HO2qQUsbEupGEL4UBzL4uA9CaXW1jOjqXwzTmYchrwdaQPnYNky5PD8IWNKZ
+        rJkouAAfQhvG4eqrZVO5cQsv74zG+Xywcq006mZuZAqlcY6CpSOkfOT9f83z3tc9
+        3wIDAQAB
+        -----END PUBLIC KEY-----
+      </textarea>
+    </div>
+    <div class="input-field">
+      <%= form.hidden_field "card_hash", value: '' %>
+    </div>
+  </div>
+</div>
