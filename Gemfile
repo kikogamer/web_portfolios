@@ -18,6 +18,7 @@ gem 'pundit', "2.0"
 gem 'kaminari'
 gem 'mini_magick'
 gem 'moip2'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
