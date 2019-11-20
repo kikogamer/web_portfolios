@@ -11,3 +11,16 @@
     </div>
   </div>
 </div>
+<!-- modal delete portfolio -->
+<div id="confirmDeletePortfolio" class="modal modal-delete-portfolio">
+  <div class="modal-content">
+      <h5 >Deseja realmente remover o portfolio?</h5>
+    </div>
+    <div class="modal-footer">
+      <%= form_with url: '/portfolios/:id', method: 'delete', html: {class: 'remove_portfolio'} do |f| %>
+        <%= f.hidden_field :id %>
+        <button type='submit' class="modal-close waves-effect waves-green btn-flat green-text">Sim</button>
+        <a class="modal-close waves-effect waves-green btn-flat red-text">Não</a>
+      <% end %>
+    </div>
+</div>
