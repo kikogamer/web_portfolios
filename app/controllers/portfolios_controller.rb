@@ -1,6 +1,6 @@
 class PortfoliosController < ApplicationController
   before_action :load_portfolios, only: :index
-  before_action :load_portfolio, only: [:edit, :update]
+  before_action :load_portfolio, only: [:destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: :show
 
   def index
@@ -12,6 +12,12 @@ class PortfoliosController < ApplicationController
     authorize @portfolio
     @portfolio.save
     redirect_to edit_portfolio_path(@portfolio)
+  end
+
+  def destroy
+    authorize @portfolio
+    @portfolio.destroy
+    redirect_to portfolios_path
   end
 
   def show
