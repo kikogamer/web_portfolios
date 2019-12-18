@@ -8,6 +8,7 @@
           placeholder="E-mail"
           id="contact-email"
           v-model="contact.email"
+          @change="submit()"
           class="font_20 custom-grey-text text-darken-1"
         />
         <label class="active font_20 custom-grey-text text-darken-1">E-mail</label>
@@ -18,6 +19,7 @@
           placeholder="Telefone"
           id="contact-phone"
           v-model="contact.phone"
+          @change="submit()"
           class="font_20 custom-grey-text text-darken-1"
         />
         <label class="active font_20 custom-grey-text text-darken-1">Telefone</label>
@@ -28,6 +30,7 @@
           placeholder="Site"
           id="contact-website"
           v-model="contact.website"
+          @change="submit()"
           class="font_20 custom-grey-text text-darken-1"
         />
         <label class="active font_20 custom-grey-text text-darken-1">Site</label>
@@ -37,6 +40,7 @@
           placeholder="Cidade"
           id="contact-address_city"
           v-model="contact.address_city"
+          @change="submit()"
           class="font_20 custom-grey-text text-darken-1"
         />
         <label class="active font_20 custom-grey-text text-darken-1">Cidade</label>
@@ -46,12 +50,10 @@
           placeholder="País"
           id="contact-address_country"
           v-model="contact.address_country"
+          @change="submit()"
           class="font_20 custom-grey-text text-darken-1"
         />
         <label class="active font_20 custom-grey-text text-darken-1">País</label>
-      </div>
-      <div class="input-field col l12 m12 s12">
-        <button type="button" class="btn right" id="add-contact" @click="submit()">Adicionar</button>
       </div>
     </div>
   </div>
