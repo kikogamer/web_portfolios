@@ -5,6 +5,7 @@ Dado 'o portfólio possui um bloco de Sobre Mim' do
 end
 
 Quando 'edita o campo sobre mim' do
+  wait_for_ajax
   @new_value = FFaker::Lorem.paragraph
   fill_in_ckeditor('about_description', @new_value)
 end
