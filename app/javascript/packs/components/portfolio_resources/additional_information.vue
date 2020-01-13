@@ -1,6 +1,6 @@
 <template>
   <div class="bloco-informações-adicionais">
-    <h4 class="block-title grey">Informações Adicinais</h4>
+    <h4 class="block-title grey">Informações Adicionais</h4>
     <div class="input-field col l12 m12 s12">
       <input
         placeholder="Título"
