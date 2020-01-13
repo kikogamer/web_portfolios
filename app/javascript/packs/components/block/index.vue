@@ -9,7 +9,9 @@
         <div class="col l4 m4 s12">
           <draggable v-model="leftBlocks" @end="updateBlocks(leftBlocks)">
             <div v-for="block in leftBlocks" :key="block.id" class="card-panel">
-              <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
+              <a class="fa fa-times grey-text right" 
+                v-bind:class="'remove-block-'+ block.kind"
+                @click="removeBlock(block)"></a>
               <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
             </div>
 
@@ -26,7 +28,9 @@
         <div class="col l8 m8 s12">
           <draggable v-model="rightBlocks" @end="updateBlocks(rightBlocks)">
             <div v-for="block in rightBlocks" :key="block.id" class="card-panel">
-              <a class="fa fa-times grey-text right" @click="removeBlock(block)"></a>
+              <a class="fa fa-times grey-text right" 
+                v-bind:class="'remove-block-'+ block.kind"
+                @click="removeBlock(block)"></a>
               <component :is="block.kind" :portfolioId="portfolioId" :blockId="block.id"></component>
             </div>
 

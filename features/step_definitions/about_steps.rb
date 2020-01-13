@@ -23,3 +23,8 @@ Então 'o campo {string} do bloco sobre mim é atualizado' do |field|
   content_field = @portfolio.about[field].gsub(%r{</?[^>]*>}, '').strip
   expect(content_field).to eq(@new_value)
 end
+
+Quando 'remove o bloco Sobre mim' do
+  find('.remove-block-about').click
+  wait_for_ajax
+end

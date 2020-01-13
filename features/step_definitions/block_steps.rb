@@ -1,23 +1,30 @@
-Dado "portfólio possui o bloco {string} à {word}" do |kind, side|
-  side = (side == "direita" ? "right" : "left")
+# frozen_string_literal: true
+
+Dado 'portfólio possui o bloco {string} à {word}' do |kind, side|
+  side = (side == 'direita' ? 'right' : 'left')
   find("#add-#{side}-block").click
-  within "#add-block-modal" do
-    select kind, from: "select-block-kind"
-    find("#confirm-add-block").click
+  within '#add-block-modal' do
+    select kind, from: 'select-block-kind'
+    find('#confirm-add-block').click
   end
 end
 
-Quando "adiciona um bloco {string} à {word}" do |kind, side|
-  side = (side == "direita" ? "right" : "left")
+Quando 'adiciona um bloco {string} à {word}' do |kind, side|
+  side = (side == 'direita' ? 'right' : 'left')
   find("#add-#{side}-block").click
-  within "#add-block-modal" do
-    select kind, from: "select-block-kind"
-    find("#confirm-add-block").click
+  within '#add-block-modal' do
+    select kind, from: 'select-block-kind'
+    find('#confirm-add-block').click
   end
   wait_for_ajax
 end
 
-Então "o bloco {string} é adicionado ao portfólio" do |kind|
+Então 'o bloco {string} é adicionado ao portfólio' do |kind|
   class_to_check = kind.downcase
   expect(page).to have_css(".bloco-#{class_to_check}")
+end
+
+Então 'o bloco {string} é removido do portfólio' do |kind|
+  class_to_check = kind.downcase
+  expect(page).not_to have_css(".remove-block-#{class_to_check}")
 end
