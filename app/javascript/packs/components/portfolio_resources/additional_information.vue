@@ -17,6 +17,7 @@
           v-model="additional_information.description"
           :config="config"
           @blur="submit()"
+          id="additional_information_description"
         />
       </div>
     </div>
