@@ -1,0 +1,14 @@
+<h1>Sua conta Premium irá expirar em <%= @days_to_expire %> dias.</h1>
+
+<h4>
+  Renove sua assinatura e apareça primeiro nas buscas de desenvolvedor 
+  aumentando suas chances de ser contratado por uma grande empresa.
+</h4>
+<p>
+  <a href=<%= "http://#{ActionMailer::Base.default_url_options[:host]}/portfolios/#{@portfolio.id}/payments" %>>
+    Renovar Assinatura
+  </a> 
+</p>
+<p>
+  Obrigado por estar com a gente, <a href="https://dev.onebitcode.com">Dev.OneBitCode</a>.
+</p>
