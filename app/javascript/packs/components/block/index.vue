@@ -88,6 +88,7 @@ import Language from "../portfolio_resources/language";
 import Skill from "../portfolio_resources/skill";
 import Social from "../portfolio_resources/social";
 import ContactForm from "../portfolio_resources/contact_form_block";
+import Project from '../portfolio_resources/project'
 
 export default {
   components: {
@@ -102,7 +103,8 @@ export default {
     Hobby,
     Language,
     Skill,
-    Social
+    Social,
+    Project
   },
   data() {
     return {
@@ -126,7 +128,8 @@ export default {
         hobby: "Hobby",
         language: "Linguagem",
         additional_information: "Informações Adicionais",
-        contact_form: "Formulário de contato"
+        contact_form: "Formulário de contato",
+        project: 'Projetos'
       }
     };
   },

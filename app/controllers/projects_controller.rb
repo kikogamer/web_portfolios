@@ -17,6 +17,6 @@ class ProjectsController < PortfolioResourcesController
   end
 
   def portfolio_resource_params
-    params.require(:project).permit(:title, :description, :kind, :link)
+    params.require(:project).permit(:title, :description, :kind, :url)
   end
 end

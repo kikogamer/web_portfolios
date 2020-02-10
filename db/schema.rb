@@ -164,9 +164,11 @@ ActiveRecord::Schema.define(version: 2020_01_31_005244) do
     t.string "title"
     t.text "description"
     t.integer "kind"
-    t.string "link"
+    t.string "url"
+    t.bigint "portfolio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_projects_on_portfolio_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -220,6 +222,7 @@ ActiveRecord::Schema.define(version: 2020_01_31_005244) do
   add_foreign_key "portfolio_tags", "tags"
   add_foreign_key "portfolios", "users"
   add_foreign_key "profiles", "portfolios"
+  add_foreign_key "projects", "portfolios"
   add_foreign_key "skills", "portfolios"
   add_foreign_key "socials", "portfolios"
 end

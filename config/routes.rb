@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :abouts, only: %i[index update]
     resources :socials, only: %i[index create destroy]
     resources :contacts, only: %i[index create update]
-    resources :projects, only: %i[index create update]
+    resources :projects, only: %i[index create destroy]
   end
 
   resources :contact_forms, only: [:create]

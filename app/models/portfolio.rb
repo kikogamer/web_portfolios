@@ -30,7 +30,7 @@ class Portfolio < ApplicationRecord
   validates :slug, presence: true, uniqueness: true
   validates :tags,
             length: { in: 0..MAX_NUMBER_OF_TAGS,
-                      message: tag_message }
+                      message: :tag_message }
 
   enum temp_avatar: { blue_robot: 0, green_robot: 1, orange_red_robot: 2,
                       purple_robot: 3, red_robot: 4, yellow_robot: 5 }
