@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_005244) do
+ActiveRecord::Schema.define(version: 2020_02_11_014512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(version: 2020_01_31_005244) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["portfolio_id"], name: "index_experiences_on_portfolio_id"
+  end
+
+  create_table "hide_companies", force: :cascade do |t|
+    t.string "name"
+    t.bigint "portfolio_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_hide_companies_on_portfolio_id"
   end
 
   create_table "hobbies", force: :cascade do |t|
@@ -215,6 +223,7 @@ ActiveRecord::Schema.define(version: 2020_01_31_005244) do
   add_foreign_key "contacts", "portfolios"
   add_foreign_key "educations", "portfolios"
   add_foreign_key "experiences", "portfolios"
+  add_foreign_key "hide_companies", "portfolios"
   add_foreign_key "hobbies", "portfolios"
   add_foreign_key "languages", "portfolios"
   add_foreign_key "orders", "portfolios"

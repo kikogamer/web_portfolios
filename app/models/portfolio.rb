@@ -26,6 +26,7 @@ class Portfolio < ApplicationRecord
   has_one :contact, dependent: :destroy
   has_many :additional_informations, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_many :hide_companies, dependent: :destroy
 
   validates :slug, presence: true, uniqueness: true
   validates :tags,

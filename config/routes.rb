@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :socials, only: %i[index create destroy]
     resources :contacts, only: %i[index create update]
     resources :projects, only: %i[index create destroy]
+    resources :hide_companies, only: %i[index create destroy]
   end
 
   resources :contact_forms, only: [:create]

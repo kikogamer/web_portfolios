@@ -89,6 +89,7 @@ import Skill from "../portfolio_resources/skill";
 import Social from "../portfolio_resources/social";
 import ContactForm from "../portfolio_resources/contact_form_block";
 import Project from '../portfolio_resources/project'
+import HideCompanies from '../portfolio_resources/hide_companies'
 
 export default {
   components: {
@@ -104,7 +105,8 @@ export default {
     Language,
     Skill,
     Social,
-    Project
+    Project,
+    hide_companies: HideCompanies
   },
   data() {
     return {
@@ -129,7 +131,8 @@ export default {
         language: "Linguagem",
         additional_information: "Informações Adicionais",
         contact_form: "Formulário de contato",
-        project: 'Projetos'
+        project: 'Projetos',
+        hide_companies: "Esconder Perfil das Empresas"
       }
     };
   },
